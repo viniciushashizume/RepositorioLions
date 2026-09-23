@@ -1,5 +1,5 @@
 let senhaCorreta = "lions2024"
-let senhaDigitada = "lions2024"
+let senhaDigitada = "lions2026"
 
 if(senhaDigitada === senhaCorreta)
 {
