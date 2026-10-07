@@ -1,6 +1,6 @@
-/*function somar(num1, num2){
+function somar(num1, num2){
     return num1 + num2
-}*/
+}
 
 let resultado = (num1, num2) => num1 + num2
 let dobro = (num) => num * 2
