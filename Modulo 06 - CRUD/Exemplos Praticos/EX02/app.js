@@ -1,24 +1,28 @@
+import promptSync from "prompt-sync";
 import pets from "./pets.js";
 import adicionarPet from "./adicionarPet.js";
 import listarPets from "./listarPets.js";
 import atualizarPets from "./atualizarPet.js";
+import removerPets from "./removerPet.js";
 
-/*let novoPet1 = {nome: "Bidu", especie: "Cachorro"}
-let novoPet2 = {nome: "Tom", especie: "Gato"}
+const prompt = promptSync()
 
-adicionarPet(pets, novoPet1)
-adicionarPet(pets, novoPet2)
-
-listarPets(pets)*/
-
-console.log("Lista de Pets antes da atualização: ")
-console.log("--------------")
+console.log("Antes da remoção")
 listarPets(pets)
 
-atualizarPets(pets, 2, {nome: "Salém Jr.", especie: ""})
-console.log("Lista de Pets depois da atualização: ")
-console.log("--------------")
+let id = Number(prompt("Digite o ID do pet que deseja remover: "))
+let confirmar = prompt("Deseja realmente remover? (sim/nao)")
+
+if(confirmar.toLowerCase() === "sim")
+{
+    removerPets(pets, id)
+}else{
+    console.log("Remoção Cancelada")
+}
+
+console.log("Depois da remoção")
 listarPets(pets)
+
 
 //---------------------------------//
 
