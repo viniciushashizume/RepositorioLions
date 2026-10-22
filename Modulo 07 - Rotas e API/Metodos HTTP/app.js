@@ -17,6 +17,11 @@ router.get("/itens/:id", (req, res) =>{
     let id = Number(req.params.id)
     let indice = itens.findIndex((item) => item.id === id)
 
+    if(indice === -1)
+    {
+        return res.status(404).send({erro: "Item não encontrado"})
+    }
+
     res.send(itens[indice])
 })
 //-------Metodo POST--------
@@ -27,13 +32,18 @@ router.post('/itens', (req, res)=>{
 
     let id = 1
 
+    if(!nome || !quantidade)
+    {
+        return res.status(400).send({erro: "Faltaram dados (400)"}) // Erro de falta de dados
+    }
+
     if(itens.length > 0)
     {
         id = itens[itens.length - 1].id + 1
     }
     let item = {id: id, nome : nome, quantidade : quantidade}
     itens.push(item)
-    res.send(item)
+    res.status(201).send(item) //Cadastro bem sucedido
 })
 
 //------- Metodo PUT ---------
@@ -41,6 +51,16 @@ router.post('/itens', (req, res)=>{
 router.put("/itens/:id", (req, res)=>{
     let id = Number(req.params.id)
     let indice = itens.findIndex((item) => item.id === id)
+
+    if(indice === -1)
+    {
+        return res.status(404).send({erro: "Item não encontrado"})
+    }
+
+    if(!req.body.quantidade)
+    {
+        return res.status(400).send({erro: "Faltaram dados (400)"}) // Erro de falta de dados
+    }
 
     itens[indice].quantidade = req.body.quantidade
 
@@ -52,6 +72,11 @@ router.put("/itens/:id", (req, res)=>{
 router.delete("/itens/:id", (req, res) =>{
     let id = Number(req.params.id)
     let indice = itens.findIndex((item) => item.id === id)
+
+    if(indice === -1)
+    {
+        return res.status(404).send({erro: "Item não encontrado"})
+    }
 
     itens.splice(indice,1)
 
