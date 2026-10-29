@@ -22,6 +22,16 @@ router.get("/itens", (req, res)=>{
 
 // ============= POST =================
 
+function gerarID (req, res, next){
+    let id = 1
+    if(itens.length > 0)
+    {
+        id = itens[itens.length - 1].id + 1
+    }
+    req.body.id = id
+    next()
+}
+
 function validarItem(req, res, next){
     if(!req.body.nome || !req.body.quantidade){
         return res.status(400).send({erro: "Informe nome e quantidade"})
@@ -29,14 +39,11 @@ function validarItem(req, res, next){
     next()
 }
 
-router.post("/itens", validarItem, (req, res) =>{
-    let id = 1
+router.post("/itens", validarItem, gerarID, (req, res) =>{
+    let id = req.body.id
     let nome = req.body.nome
     let quantidade = req.body.quantidade
-    if(itens.length > 0)
-    {
-        id = itens[itens.length - 1].id + 1
-    }
+
     let item = {id:id, nome:nome, quantidade:quantidade}
     itens.push(item)
     res.status(201).send(item)
