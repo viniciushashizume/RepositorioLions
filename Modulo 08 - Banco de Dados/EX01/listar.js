@@ -7,9 +7,9 @@ console.log("Total de produtos: " + produtos.length)
 
 let valorTotal = 0
 
-produtos.forEach((produto) =>{
+produtos.forEach((produto) =>{ 
     let valor = produto.preco * produto.estoque
-    console.log(`${produto.nome}: R$ ${produto.preco} | Estoque ${produto.estoque}`)
+    console.log(`ID: ${produto._id} ${produto.nome}: R$ ${produto.preco} | Estoque ${produto.estoque}`)
     valorTotal = valorTotal + valor
 })
 

@@ -3,7 +3,7 @@ import Produto from "./Produto.js"
 
 let teclado = await Produto.create({
     nome: "Teclado",
-    categoria: "Periférico",
+    categoria: "Periferico",
     preco: 149,
     estoque: 10
 })
