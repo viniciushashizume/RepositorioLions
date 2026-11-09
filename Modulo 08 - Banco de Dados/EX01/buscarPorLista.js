@@ -1,3 +1,4 @@
+import { Types } from "mongoose"
 import mongoose from "../conexao.js"
 import Produto from "./Produto.js"
 

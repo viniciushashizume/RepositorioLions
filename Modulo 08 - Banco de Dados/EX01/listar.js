@@ -2,7 +2,7 @@ import mongoose from "../conexao.js"
 import Produto from "./Produto.js"
 
 //"converte" a lista do banco de dados em um array no js
-let produtos = await Produto.find()
+let produtos = await Produto.find({categoria: "Periferico"})
 console.log("Total de produtos: " + produtos.length)
 
 let valorTotal = 0
