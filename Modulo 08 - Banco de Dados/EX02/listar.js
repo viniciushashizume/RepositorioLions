@@ -11,4 +11,5 @@ posts.forEach((post) => {
     })
 })
 
-await mongoose.disconnect()
+await mongoose.discon
+
